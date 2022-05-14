@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Pixel Drawing</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			:root {
+				--primary: #2563eb;
+				--primary-hover: #3b82f6;
+
+				--secondary: #1e293b;
+				--secondary-hover: #475569;
+
+				--white: #e5e7eb;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Nunito", sans-serif;
+				/* background: var(--secondary); */
+				/* color: var(--white); */
+			}
+
+			.box {
+				outline: 1px solid var(--white);
+			}
+
+			.box-0 * {
+				outline: 0 !important;
+			}
+
+			.board {
+				display: inline-grid;
+			}
+
+			.bg-green-500 {
+				background: #22c55e;
+			}
+
+			.btn-primary {
+				background: var(--primary);
+				animation-duration: 200ms;
+				border: 0;
+				color: white;
+				padding: 0.75rem 1.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				border-radius: 0.375rem;
+				font-weight: bold;
+			}
+
+			.btn-primary:hover {
+				background: var(--primary-hover);
+			}
+
+			.container {
+				display: flex;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				user-select: none;
+			}
+
+			.action {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div>
+				<div id="board" class="board"></div>
+				<div class="action">
+					<div>
+						<input type="color" name="color-picker" id="color-picker" />
+					</div>
+					<button class="btn-primary" id="save-button">Save Art</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="./dist/bundle.js"></script>
+	</body>
+</html>
