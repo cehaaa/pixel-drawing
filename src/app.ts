@@ -1,21 +1,26 @@
 import Board from "./Board";
 
+import {
+	boardElement,
+	colorPickerElement,
+	saveButtonElement,
+} from "./elements";
+
+import { savePixelArt } from "./utility";
+
 const rows: number = 16;
 const cols: number = 16;
 
-console.log("anyaaa");
-
-const boardElement: HTMLElement = document.getElementById("board")!;
+let isMouseDown: boolean = false;
+let color: string = "#1e293b";
 
 const board: Board = new Board(rows, cols, boardElement);
 board.init();
 
-let isMouseDown: boolean = false;
-
 boardElement.addEventListener("mousedown", (evt: MouseEvent) => {
-	const target: Element = evt.target as Element;
+	const target: HTMLDivElement = evt.target as HTMLDivElement;
 	if (target.classList.contains("box")) {
-		target.classList.add("bg-green-500");
+		target.style.backgroundColor = color;
 	}
 
 	isMouseDown = true;
@@ -23,13 +28,22 @@ boardElement.addEventListener("mousedown", (evt: MouseEvent) => {
 
 boardElement.addEventListener("mouseover", (evt: MouseEvent) => {
 	if (isMouseDown) {
-		const target: Element = evt.target as Element;
+		const target: HTMLDivElement = evt.target as HTMLDivElement;
 		if (target.classList.contains("box")) {
-			target.classList.add("bg-green-500");
+			target.style.backgroundColor = color;
 		}
 	}
 });
 
 boardElement.addEventListener("mouseup", () => {
 	isMouseDown = false;
+});
+
+saveButtonElement.addEventListener("click", () => {
+	boardElement.classList.add("box-0");
+	savePixelArt();
+});
+
+colorPickerElement.addEventListener("change", (e: Event) => {
+	color = (e.target as HTMLInputElement).value;
 });
